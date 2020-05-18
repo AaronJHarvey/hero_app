@@ -7,7 +7,7 @@ puts " "
 puts "Enter a hero name to see information about that hero."
 puts " "
 @hero_name = gets.strip.downcase
-Api.get_hero(@hero_name)
+Api.get_hero(@hero_name) 
 
 ##display list of heros to the user
 print_heroes(Hero.all)
@@ -19,10 +19,12 @@ while input != 'exit'
 if input == 'list'
   heroes = Hero.select_by_name(@hero_name)
   print_heroes(heroes)
-binding.pry
-#elsif input.to_i > 0 && input.to_i < heroes.length ## user chooses a character
-  #hero = heroes [input.to_i - 1]
-  #Api.getHeroDetails(hero)
+elsif input.to_i > 0 && input.to_i < Hero.select_by_name(@hero_name).length ## user chooses a character
+  character = Hero.select_by_name(@hero_name)[input.to_i - 1]
+  ## Get details about that character
+  Api.getHeroDetails(character) if !character.biography
+  print_character(character)
+
 #elsif ##user chooses another hero
   ## do something else
 else
@@ -44,6 +46,11 @@ def print_heroes(heroes)
   puts " "
 end
 
+def print_character(character)
+puts character.name
+puts character.biography
+end
+
 def prompt_user
   puts " "
 puts "Select a number to see the biography for that character;
@@ -51,5 +58,4 @@ type 'list' to see the list again, 'hero' to select a new hero,
 or 'exit' to exit."
 puts " "
 end
-
 end

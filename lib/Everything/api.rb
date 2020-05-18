@@ -14,6 +14,19 @@ end
 
 
 end
+def self.getHeroDetails(character) #character object
+## what is my endpoint?
+url = "https://superheroapi.com/api/10221861033137565/#{character.id}"
+## How do I go there and get what I need?
+response = HTTParty.get(url).to_s
+## How do I parse the response?
+character_details = JSON.parse(response)["biography"]
+##What do I want to do from there?
+## add an attribute to EXISTING character obj.
+character.biography =  character_details
+
+end
+
 end
 
 #service file/class. Responsible for communicating with API -
