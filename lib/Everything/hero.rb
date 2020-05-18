@@ -1,16 +1,22 @@
+
+
 class Hero
-attr_accessor :name, :biography
+attr_accessor :name, :biography, :id
 
 @@all = []
 
-def initialize(name:, biography:)
+def initialize(name:, id:)
 @name = name
-@biography = biography
+@id = id
 @@all << self
 end
 
 def self.all
-  @@all
+@@all
+end
+
+def self.select_by_name(name)
+  self.all.select {|hero| hero.name == name}
 end
 
 end
