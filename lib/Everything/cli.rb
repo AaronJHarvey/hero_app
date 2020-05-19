@@ -19,7 +19,7 @@ while input != 'exit'
 if input == 'list'
   heroes = Hero.select_by_name(@hero_name)
   print_heroes(heroes)
-elsif input.to_i > 0 && input.to_i < Hero.select_by_name(@hero_name).length ## user chooses a character
+elsif input.to_i > 0 && input.to_i <= Hero.select_by_name(@hero_name).length ## user chooses a character
   character = Hero.select_by_name(@hero_name)[input.to_i - 1]
   ## Get details about that character
   Api.getHeroDetails(character) if !character.biography
