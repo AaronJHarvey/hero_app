@@ -24,7 +24,6 @@ character_details = JSON.parse(response)["biography"]
 ##What do I want to do from there?
 ## add an attribute to EXISTING character obj.
 character.biography =  character_details
-
 end
 
 end
