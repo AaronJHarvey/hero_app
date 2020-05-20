@@ -13,6 +13,7 @@ Or Install it yourself with:
 
 $ gem install hero_app
 
+# Description
 Learn more about your favorite heroes!
 
 A simple app for getting quick biographies about hero characters you love. 
