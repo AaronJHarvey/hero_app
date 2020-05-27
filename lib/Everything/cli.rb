@@ -43,8 +43,14 @@ class Cli
             @hero_name = gets.strip.downcase
             mod_name = @hero_name.tr(" ", "_")
             Api.get_hero(mod_name)
+          if Hero.select_by_name(@hero_name).count > 0
             print_heroes(Hero.select_by_name(@hero_name))
             prompt_user
+          else
+            puts "We couldn't find info on #{@hero_name}. Please try again."
+          input_hero
+          end
+
 
 
 
