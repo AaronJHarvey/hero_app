@@ -5,6 +5,9 @@ url = "https://superheroapi.com/api/10221861033137565/search/#{hero_name}"
 ## How do I go there and get what I need?
 response = HTTParty.get(url).to_s
 heroes = JSON.parse(response)["results"]
+  if heroes == nil
+    heroes = []
+  end
 ## how do I handle that json and turn it into meaningful data?
 heroes.each do |hero_details|
 name = hero_details["name"]
@@ -20,7 +23,7 @@ url = "https://superheroapi.com/api/10221861033137565/#{character.id}"
 ## How do I go there and get what I need?
 response = HTTParty.get(url).to_s
 ## How do I parse the response?
-character_details = JSON.parse(response)["biography"]
+character_details = JSON.parse(response)["biography"].to_s
 ##What do I want to do from there?
 ## add an attribute to EXISTING character obj.
 character.biography =  character_details
