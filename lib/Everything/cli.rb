@@ -71,6 +71,7 @@ def while_loop
         print_character(character) #displays the current character's name and biography
         prompt_user #asks the user to choose a version of the hero, request the list again, select new to search for a different hero, or exit to leave
       elsif input == 'new' #if user inputs new
+        Hero.all.clear
         prompt_for_hero#request user inputs a hero name
         receive_and_use_the_hero #gets the input from the user
       else
