@@ -16,7 +16,8 @@ def self.all
 end
 
 def self.select_by_name(name)
-  self.all.select {|hero| hero.name.downcase.include? name}
+  self.all.select {|hero| hero.name.downcase.include?name}
 end
+
 
 end
